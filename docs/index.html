@@ -890,7 +890,7 @@ regenerateBtn.addEventListener('click', () => {
     resultDiv.innerHTML = " "
 });
         const loadRandomDua = (resultDiv) => {
-    fetch('http://localhost:8080/random-Dua')
+    fetch('http://localhost:9090/random-Dua')
     .then(response => response.json())
     .then(result => {
         resultDiv.innerHTML = `<h3>Arabic Dua: ${result.Dua_Arabic}</h3> <br><br> <h4>Transliteration: ${result.Dua_Translit}</h4> <br><br>  <h5> Definition: ${result.Dua_English}</h5> <br><br> <h6> Recommended Use: ${result.Recommended}</h6>`;
