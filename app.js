@@ -10,7 +10,7 @@ console.log(moment);
 
 const app = express();
 
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'docs'));
 app.set('view engine', 'html');
 app.use(express.static('public'));
 app.engine('html', require('ejs').renderFile);
