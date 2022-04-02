@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -110,11 +111,9 @@
         font-size: 28px;
     }
     h5{
-        color: rgb(141, 104, 1);
         font-size: 26px;
     }
     h6{
-        color: rgb(226, 19, 174);
         font-size: 24px;
     }
     footer{
@@ -123,7 +122,7 @@
         margin-top: 15%;
     }
     a{
-        background-color: rgb(72, 8, 248);
+        background-color: rgb(250, 241, 241);
         width: 10%;
         position: relative;
         top: 270px;
@@ -827,7 +826,7 @@
         margin-top: 15%;
     }
     a{
-        background-color: rgb(72, 8, 248);
+        background-color: rgb(238, 236, 243);
         width: 10%;
         position: relative;
         top: 270px;
@@ -849,7 +848,6 @@
     src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="check.js"></script>
 </head>
 <body>
     <header>
@@ -869,7 +867,7 @@ Some of these du’as have a tremendous backstory as well. We’ll try to includ
 We include transliteration and translation in English for each du’a so you can pronounce and understand the meaning of the Rabbana duas. <br>
 
 
-        This website helps you generate 40 random Rabana Duas, where you can get the arabic version as well as the Transliteration, acompannied with its definition, and backed up with a strong recommended use of the Dua. 
+        This website helps you generate 40 random Rabana Duas, where you can get the arabic version as well as the Transliteration, acompannied with its definition, and backed up with a strong recommended use of the Dua. At the bottom there is a Youtube link that you can access and listen to all the 40 Rabanah Dua's being recited.
 <span class="bigger"> ۞ </span></p>
 </div>
     <div class="container">
@@ -883,19 +881,33 @@ We include transliteration and translation in English for each du’a so you can
         const generateBtn = document.querySelector('#generate');
         const regenerateBtn = document.querySelector('#regenerate');
 
-        generateBtn.addEventListener('click', () => {
-    loadRandomDua(resultDiv);
-});
-regenerateBtn.addEventListener('click', () => {
-    resultDiv.innerHTML = " "
-});
-        const loadRandomDua = (resultDiv) => {
-    fetch('http://localhost:9090/random-Dua')
-    .then(response => response.json())
+        const loadRandomDua = async (resultDiv) => {
+    await fetch('http://localhost:9090/random-Dua', {
+        method: "GET",
+        mode: 'cors',
+        headers: {
+            "Content-Type": "application/json"},
+            body: JSON.stringify(loadRandomDua)
+
+        }) .then(response => response.json())
     .then(result => {
         resultDiv.innerHTML = `<h3>Arabic Dua: ${result.Dua_Arabic}</h3> <br><br> <h4>Transliteration: ${result.Dua_Translit}</h4> <br><br>  <h5> Definition: ${result.Dua_English}</h5> <br><br> <h6> Recommended Use: ${result.Recommended}</h6>`;
     });
 };
+generateBtn.addEventListener('click', () => {
+    loadRandomDua(resultDiv);
+});
+generateBtn.addEventListener('touchstart', () => {
+    loadRandomDua(resultDiv);
+});
+
+regenerateBtn.addEventListener('click', () => {
+    resultDiv.innerHTML = " "
+});
+
+regenerateBtn.addEventListener('touchstart', () => {
+    resultDiv.innerHTML = " "
+});
     </script>
     </div>
     <footer>
