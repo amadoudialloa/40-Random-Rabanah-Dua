@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const data = require('./Array to string (5).json');
 const cors = require('cors');
+const port = process.env.PORT || 9090;
 
 
 
@@ -44,5 +45,5 @@ app.use('/', (req, res) => {
     return res.render('index');
 });
 
-app.listen(9090, () => console.log('App'));
+app.listen(PORT, () => console.log('App'));
  
