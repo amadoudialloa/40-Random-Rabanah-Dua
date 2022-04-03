@@ -881,8 +881,8 @@ We include transliteration and translation in English for each du’a so you can
         const generateBtn = document.querySelector('#generate');
         const regenerateBtn = document.querySelector('#regenerate');
 
-        const loadRandomDua = async (resultDiv) => {
-    await fetch('http://localhost:9090/random-Dua', {
+        const loadRandomDua = (resultDiv) => {
+     fetch('https://duagenerator.herokuapp.com', {
         method: "GET",
         mode: 'cors',
         headers: {

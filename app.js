@@ -1,12 +1,7 @@
 const express = require('express');
-const path = require('path');
+const path = require('path')
 const data = require('./Array to string (5).json');
-const cors = require('cors');
-const port = process.env.PORT || 9090;
-
-
-
-
+const port = process.env.PORT || "3000";
 
 /*const moment = require('moment-hijri');
 
@@ -17,22 +12,10 @@ console.log(moment);
 
 const app = express();
 
-
-app.use(cors({
-    origin: "*",
-}))
-
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
-
 app.set('views', path.join(__dirname, 'docs'));
 app.set('view engine', 'html');
 app.use(express.static('public'));
 app.engine('html', require('ejs').renderFile);
-
 
 
 
@@ -45,5 +28,5 @@ app.use('/', (req, res) => {
     return res.render('index');
 });
 
-app.listen(PORT, () => console.log('App'));
+app.listen(port, () => console.log('Server is Listen to '+ port));
  
