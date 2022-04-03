@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -882,14 +881,7 @@ We include transliteration and translation in English for each du’a so you can
         const regenerateBtn = document.querySelector('#regenerate');
 
         const loadRandomDua = (resultDiv) => {
-     fetch('https://random-rabanah-dua-generator.herokuapp.com', {
-        method: "GET",
-        mode: 'cors',
-        headers: {
-            "Content-Type": "application/json"},
-            body: JSON.stringify(loadRandomDua)
-
-        }) .then(response => response.json())
+     fetch('https://random-rabanah-dua-generator.herokuapp.com') .then(response => response.json())
     .then(result => {
         resultDiv.innerHTML = `<h3>Arabic Dua: ${result.Dua_Arabic}</h3> <br><br> <h4>Transliteration: ${result.Dua_Translit}</h4> <br><br>  <h5> Definition: ${result.Dua_English}</h5> <br><br> <h6> Recommended Use: ${result.Recommended}</h6>`;
     });
